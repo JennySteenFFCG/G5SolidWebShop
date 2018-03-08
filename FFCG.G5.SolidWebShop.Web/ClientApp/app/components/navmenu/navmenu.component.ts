@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShoppingCartService } from '../../shared/shoppingcart.service'
 
 @Component({
     selector: 'nav-menu',
@@ -8,6 +9,11 @@ import { Component } from '@angular/core';
 
 export class NavMenuComponent {
     collapse: string = "collapse";
+    public numberOfProductsAdded: number;
+
+    constructor(shoppingCartService: ShoppingCartService){
+        shoppingCartService.cartChanged$.subscribe(numberOfProducts => {this.numberOfProductsAdded = numberOfProducts})
+    }
 
     collapseNavbar(): void {
         if (this.collapse.length > 1) {
