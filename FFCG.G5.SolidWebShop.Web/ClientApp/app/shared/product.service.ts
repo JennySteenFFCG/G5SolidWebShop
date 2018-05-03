@@ -5,7 +5,7 @@ import { ORIGIN_URL } from './constants/baseurl.constants';
 import { IUser } from '../models/User';
 import { TransferHttp } from '../../modules/transfer-http/transfer-http';
 import { Observable } from 'rxjs/Observable';
-import { IProduct } from '../models/Product'
+import { IProduct } from '../models/Product';
 
 @Injectable()
 export class ProductService {

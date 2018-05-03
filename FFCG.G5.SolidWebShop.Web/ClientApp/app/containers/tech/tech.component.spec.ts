@@ -5,21 +5,13 @@ import { TechComponent } from './tech.component';
 import { ProductService } from '../../shared/product.service';
 import { ShoppingCartService } from '../../shared/shoppingcart.service';
 
-let fixture: ComponentFixture<TechComponent>;
+describe('Tech component', () => {
+    let techComponent: TechComponent;
 
-describe('Tech Component', () => {
-
-    beforeEach(() => {
-        TestBed.configureTestingModule({ 
-            declarations: [TechComponent],
-            providers: [{provide: ProductService, useValue: ProductService}, {provide: ShoppingCartService, useValue: ShoppingCartService}]
-        });
-        fixture = TestBed.createComponent(TechComponent);
-        fixture.detectChanges();
-    });
-
-    it('should contain products', () => {
-        expect(fixture.componentInstance.products).toBeTruthy();
+    it('should be able to retrieve products', () => {
+        let fakeProductService = new ProductService(null, null, null);
+        techComponent = new TechComponent(fakeProductService, null);
+        expect(techComponent.products.length).toBe(5);
     });
 
 });
